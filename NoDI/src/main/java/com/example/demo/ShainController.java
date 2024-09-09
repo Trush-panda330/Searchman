@@ -2,6 +2,8 @@ package com.example.demo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -14,7 +16,12 @@ public class ShainController {
     }
 
     @RequestMapping("/output")
-    public String result(ShainForm shainForm, Model model) {
+    public String result(@Validated ShainForm shainForm, BindingResult bindingResult, Model model) {
+    	
+    	//errorがあったら"index.html"に戻す
+    	if(bindingResult.hasErrors()) {
+    		return "index.html";
+    	}
         // パラメータ「number」を取得し、「name」を設定する
         String name = "コントローラー太郎";
         model.addAttribute("number", shainForm.getNumber()); // モデルに「number」を追加
