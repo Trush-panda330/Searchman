@@ -14,9 +14,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		this.employeeRepository = employeeRepository;
 	}
 	
+	//リポジトリから社員を選択
 	@Override
 	public String findByNo(String number) {
-		//リポジトリから社員を選択
 		//依存性の注入をしていないとここでエラーになっている
 //		EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
 		String name = employeeRepository.selectByNo(number);
