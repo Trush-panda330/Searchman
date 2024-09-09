@@ -25,7 +25,7 @@ public class EmployeeController {
     	
         // パラメータ「number」を取得し、「name」を設定する
 //        String name = "コントローラー太郎";
-        
+        //サービス層から社員を検索
         EmployeeService employeeService = new EmployeeServiceImpl();
         String name = employeeService.findByNo(employeeForm.getNumber());
 			
