@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>入力画面</title>
+</head>
+
+<body>
+	<h1>NoDIパターン</h1>
+	<form method="post""output.html" th:action="@{output}">
+		<p>社員Noを入れてください(3桁の半角数字)</p>
+<!--		th:field="${}"とth:errors="${}"はよくセットで使われる-->
+		<input type="text" name="number" th:field="${employeeForm.number}">
+		<p style="color: red;" th:errors="${employeeForm.number}">
+			社員Noを入れてください
+		</p>
+		<input type="submit" value="送信">
+	</form>
+</body>
+
+</html>
+
+<!--th:field="${}"とth:errors="${}"はよくセットで使われる-->
