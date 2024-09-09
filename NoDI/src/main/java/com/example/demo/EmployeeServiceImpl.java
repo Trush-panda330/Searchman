@@ -6,6 +6,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 		//リポジトリから社員を選択
 		EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
 		String name = employeeRepository.selectByNo(number);
-		return null;
+		return name;
 	}
 }
