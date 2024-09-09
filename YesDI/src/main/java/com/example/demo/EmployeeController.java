@@ -8,6 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class EmployeeController {
+	//
+	private final EmployeeService employeeService;
+	
+	//EmployeeServiceのDI
+	public EmployeeController(EmployeeService employeeService) {
+		this.employeeService = employeeService;
+	}
 
     @RequestMapping("/input")
     public String index(EmployeeForm employeeForm) {
@@ -23,8 +30,13 @@ public class EmployeeController {
     		return "index.html";
     	}
     	
-        // パラメータ「number」を取得し、「name」を設定する
-        String name = "コントローラー太郎";
+       //依存性がない場合だとこのnewする部分がないとエラーになる
+//        EmployeeService employeeService = new EmployeeServiceImpl();
+
+    	
+        //サービス層から社員を検索
+        String name = employeeService.findByNo(employeeForm.getNumber());
+
         model.addAttribute("number", employeeForm.getNumber()); // モデルに「number」を追加
         model.addAttribute("name", name);     // モデルに「name」を追加
         // "output.html" テンプレートを返す
