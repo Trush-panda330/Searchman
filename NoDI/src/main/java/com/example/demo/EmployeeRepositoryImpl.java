@@ -6,11 +6,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 		String name;
 		switch (number) {
 		case "100":
-			name = "鈴木";
+			name = "佐藤";
 			break;
 
 		case "101":
-			name = "佐藤";
+			name = "東";
 			break;
 			
 		case "102": 
