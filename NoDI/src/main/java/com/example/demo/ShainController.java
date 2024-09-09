@@ -10,18 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ShainController {
 
     @RequestMapping("/input")
-    public String index() {
+    public String index(ShainForm shainform) {
         // "index.html" テンプレートを返す
         return "index.html";
     }
 
     @RequestMapping("/output")
-    public String result(@Validated ShainForm shainForm, BindingResult bindingResult, Model model) {
+      public String result(@Validated ShainForm shainForm, BindingResult bindingResult, Model model) {
     	
     	//errorがあったら"index.html"に戻す
     	if(bindingResult.hasErrors()) {
     		return "index.html";
     	}
+    	
         // パラメータ「number」を取得し、「name」を設定する
         String name = "コントローラー太郎";
         model.addAttribute("number", shainForm.getNumber()); // モデルに「number」を追加
