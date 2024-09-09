@@ -7,16 +7,16 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ShainController {
+public class EmployeeController {
 
     @RequestMapping("/input")
-    public String index(ShainForm shainform) {
+    public String index(EmployeeForm employeeForm) {
         // "index.html" テンプレートを返す
         return "index.html";
     }
 
     @RequestMapping("/output")
-      public String result(@Validated ShainForm shainForm, BindingResult bindingResult, Model model) {
+      public String result(@Validated EmployeeForm employeeForm, BindingResult bindingResult, Model model) {
     	
     	//errorがあったら"index.html"に戻す
     	if(bindingResult.hasErrors()) {
@@ -25,7 +25,7 @@ public class ShainController {
     	
         // パラメータ「number」を取得し、「name」を設定する
         String name = "コントローラー太郎";
-        model.addAttribute("number", shainForm.getNumber()); // モデルに「number」を追加
+        model.addAttribute("number", employeeForm.getNumber()); // モデルに「number」を追加
         model.addAttribute("name", name);     // モデルに「name」を追加
         // "output.html" テンプレートを返す
         return "output.html";
