@@ -11,6 +11,9 @@
 	<form method="post""output.html" th:action="@{output}">
 		<p>社員Noを入れてください(3桁の半角数字)</p>
 		<input type="text" name="number">
+		<p style="color: red;" th:errors="${shainForm.number}">
+			社員Noを入れてください
+		</p>
 		<input type="submit" value="送信">
 	</form>
 </body>
